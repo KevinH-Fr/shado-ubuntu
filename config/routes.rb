@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   get 'steps_subscribe/step1'
   get 'steps_subscribe/step2'
   get 'steps_subscribe/step3'
+
+  post "create-checkout-session", to: "steps_subscribe#create_checkout_session"
+
   
   get 'steps_athlete/step1'
   get 'steps_athlete/step2'

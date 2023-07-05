@@ -17,16 +17,20 @@
 
    <div class="fw-bold"> ventilation price: </div> <hr>
 
-     <%#= number_to_currency(@netAthlete) %> 
-     <%#= number_to_currency(@platformFees.to_f) %> 
- <%#= number_to_currency(@paymentFees) %>
-
 
 <%= render "subscriptions/form_main_subscription", subscription: @subscription %>
 
+
+  <%# bouton stripe %>
+    <div data-turbo='false'>
+      <%= form_with url: :create_checkout_session do |f| %>
+        <%= f.hidden_field :id, value: @subscription.id %>
+        <%= f.submit 'buy me - stripe', class: "btn btn-success" %>
+      <% end %>    
+    </div>
+
 </div>
 
-<%#= link_to "Go to step3", steps_subscribe_step3_path, class: "w-100 btn btn-primary" %>
 
 </div>
 
