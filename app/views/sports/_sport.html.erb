@@ -1,0 +1,10 @@
+<div id="<%= dom_id sport %>">
+  <p>
+    <strong>Name:</strong>
+    <%= sport.name %>
+  </p>
+
+  <p>
+    <%= image_tag(sport.icon, class: "w-25") if sport.icon.present? %> 
+  </p>
+</div>

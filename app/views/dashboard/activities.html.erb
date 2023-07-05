@@ -1,0 +1,40 @@
+  <%= render "navbar" %>
+
+ <h2 class="my-4">Activities</h2>
+
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card card-with-effect">
+      <div class="card-body">
+        <h5 class="card-title"> Number of subscribers: <%= @followers.count %> </h5>
+        <p class="card-text">
+            <%= render "charts/chartLineFansAthlete" %>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6">
+    <div class="card card-with-effect">
+      <div class="card-body">
+        <h5 class="card-title"> Number of posts: <%= @posts.count %> </h5>
+        <p class="card-text">
+          <%= render "charts/chartPiePostsAthlete" %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <h2 class="my-4">Mes followers
+    (nb: <%= @followers.count %>) 
+  </h2>
+  <%= render partial: 'fans/fan', collection: @followers, as: :fan %>
+
+  <hr>
+
+posts without media: <%= @posts_without_media.count %> <br>
+posts with image: <%= @posts_with_images.count %> <br>
+posts with video: <%= @posts_with_videos.count %> <br>
+

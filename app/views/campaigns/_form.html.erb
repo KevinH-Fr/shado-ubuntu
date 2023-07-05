@@ -1,0 +1,65 @@
+<%= form_with(model: campaign) do |form| %>
+  <% if campaign.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(campaign.errors.count, "error") %> prohibited this campaign from being saved:</h2>
+
+      <ul>
+        <% campaign.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div>
+    <%= form.label :periodicity, style: "display: block" %>
+    <%= form.check_box :periodicity %>
+  </div>
+
+  <div>
+    <%= form.label :subscription, style: "display: block" %>
+    <%= form.text_field :subscription %>
+  </div>
+
+  <div>
+    <%= form.label :target, style: "display: block" %>
+    <%= form.number_field :target %>
+  </div>
+
+  <div>
+    <%= form.label :start, style: "display: block" %>
+    <%= form.date_field :start %>
+  </div>
+
+  <div>
+    <%= form.label :end, style: "display: block" %>
+    <%= form.date_field :end %>
+  </div>
+
+  <div>
+    <%= form.label :thankyounote, style: "display: block" %>
+    <%= form.text_area :thankyounote, placeholder: "thanks a lot for donating !" %>
+  </div>
+
+  <% if campaign.persisted? %>
+    <%= form.hidden_field :athlete_id %>
+  <% else %>
+    <%= form.hidden_field :athlete_id, value: user_athlete %>
+  <% end %>
+
+  <hr>  
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

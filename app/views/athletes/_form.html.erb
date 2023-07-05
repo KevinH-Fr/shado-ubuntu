@@ -1,0 +1,103 @@
+
+
+
+    <%= form_with(model: athlete) do |form| %>
+      <% if athlete.errors.any? %>
+        <div style="color: red">
+          <h2><%= pluralize(athlete.errors.count, "error") %> prohibited this athlete from being saved:</h2>
+          <ul>
+            <% athlete.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+
+<div data-controller="preview-img">
+<div class="card" style="border: none;"> 
+  <div class="card-profile mb-2 custom-rounded">
+
+    <div class="image_wrapper">
+      <div class="sized">
+        <%= form.file_field :panorama_pic, id: "pano-pic-athlete-input", 
+          class: "form-control", style: "display: none;", 
+          accept: "image/*", "data-action": "change->preview-img#previewpano" %>
+
+        <div class="text-center ">
+          <label for="pano-pic-athlete-input">
+            <div id="pano-pic-athlete-preview" data-preview-img-target="previewpano">
+              <%= image_tag(athlete.default_panorama_pic, class: "panorama-img custom-rounded bg-warning") %>
+              <%# voir comment gérer la taille de pano pic avant modif , style: "width: 500px;")%>
+              <i class="fa fa-edit text-light fw-bold" style="position: absolute; top: 50%; left: 80%; transform: translate(-50%, -50%);"></i>
+            </div>
+          </label>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="profile-pic-overlay">
+      <%= form.file_field :profile_pic, id: "profile-pic-athlete-input", 
+          class: "form-control", style: "display: none;", 
+          accept: "image/*", "data-action": "change->preview-img#preview" %>
+
+      <div class="text-center my-4">
+        <label for="profile-pic-athlete-input">
+          <div id="profile-pic-athlete-preview" data-preview-img-target="preview">
+            <%= image_tag(athlete.default_profile_pic, class: "profile-pic") %>
+            <i class="fa fa-edit text-light fw-bold" style="position: absolute; top: 50%; left: 80%; transform: translate(-50%, -50%);"></i>
+          </div>
+        </label>
+      </div> 
+    </div>
+
+  </div>
+
+
+  <div class="p-4"> 
+
+      <br> <br>
+      <h4 class="text-center fw-bold my-4">Athlete profile</h4>
+
+      <div class="input-group my-2">
+        <%= form.label :name, class:"input-group-text label-with-format label-colored" %>
+        <%= form.text_field :name, class:"form-control " %>
+      </div>
+  
+      <div class="input-group my-2">
+        <%= form.label :sport, class: "input-group-text label-with-format label-colored" %>
+        <%= form.select :sport_id, @sports.collect { |c| [c.name, c.id] }, 
+                {include_blank: :true}, class: "form-select text-center" %>
+      </div>
+
+      <% if athlete.persisted? %>
+        <%= form.hidden_field :user_id, class: "form-control field-with-format" %>
+      <% else %>
+         <%= form.hidden_field :user_id, value: current_user.id, class: "form-control field-with-format" %>     
+      <% end %>
+
+
+      <div class="input-group my-2">
+        <%= form.label :bio, class: "input-group-text label-with-format bg-secondary text-light" %>
+        <%= form.text_area :bio, class: "form-control field-with-format" %>
+      </div>
+
+
+      <div class="input-group my-2">
+        <%#= form.text_field :user_id, value: current_user.id %>
+      </div>
+
+  </div>
+
+      <div class="container-fluid text-end mt-2 p-2"> 
+        <button type="submit" class="btn btn-primary">
+          <span><i class="bi bi-check"></i> Update</span>
+        </button>
+      </div>
+      <br>
+    <% end %>
+
+  </div>
+</div>
+</div>

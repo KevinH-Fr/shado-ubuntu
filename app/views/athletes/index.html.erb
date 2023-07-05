@@ -1,0 +1,49 @@
+
+
+<div class="p-4">
+    <%= search_form_for @q, url: athletes_path, method: :get do |f| %>
+
+        <div class="form-group my-4">
+            <div class="input-group">
+                <span class="input-group-text">
+                <i class="fa fa-search"></i>
+                </span>
+                <%= f.text_field :name_cont, class: "form-control", placeholder: "Nom" %>
+            </div>
+        </div>
+
+        <div class="form-group my-4">
+          <% Sport.all.each do |sport| %>
+            <%= link_to sport.name, athletes_path(sport: sport.name), class: "btn btn-primary me-2 mb-2" %>
+          <% end %>
+          <%= link_to "Reset", athletes_path, class: "btn btn-outline-danger mb-2" %>
+        </div>
+
+        <div class="text-end">
+            <%= f.submit "Chercher", class: "btn btn-success" %>
+        </div>
+
+    <% end %>
+
+</div>
+
+
+<h2 class="my-4">   My Athletes</h2>
+      
+
+    <% if @athletes_suivis.present? %>
+      <div id="athletes">
+        <% @athletes_suivis.each do |athlete| %>
+          <%= render athlete %>
+        <% end %>
+      </div>
+    <% end %>
+
+<h2 class="my-4">   All Athletes</h2>
+
+  <div id="athletes" class="my-4">
+    <% @athletes.each do |athlete| %>
+      <%= render athlete %> <br>
+    <% end %>
+  </div>
+

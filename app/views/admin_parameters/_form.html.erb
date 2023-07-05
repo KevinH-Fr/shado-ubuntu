@@ -1,0 +1,22 @@
+<%= form_with(model: admin_parameter) do |form| %>
+  <% if admin_parameter.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(admin_parameter.errors.count, "error") %> prohibited this admin_parameter from being saved:</h2>
+
+      <ul>
+        <% admin_parameter.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :remuneration, style: "display: block" %>
+    <%= form.number_field :remuneration %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

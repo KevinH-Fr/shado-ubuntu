@@ -1,0 +1,15 @@
+
+<div class="card card-profile card-with-effect mb-4 m-0 p-0" id="<%= dom_id fan %>">
+  <div class="image_wrapper">
+    <div class="sized-fan-panorama rounded-top bg-secondary"> </div>
+  </div>
+  <div class="profile-pic-fan-overlay">
+    <%= image_tag(fan.default_profile_pic, class: "profile-pic") %> 
+  </div>
+  <div class="card-body pt-5 profile-card-text profile-pic-gap">
+    <p class="card-text"><%= fan.pseudo %></p>
+    <p class="card-text"><%= fan.user.email %></p>
+    <%= link_to "", fan_path(fan), class: "btn btn-sm btn-primary fa-solid fa-eye m-1" %>
+    <%= button_to "", edit_fan_path(fan), method: :post, class: "btn btn-sm btn-secondary fa-solid fa-pen-to-square m-1" %>
+  </div>
+</div>

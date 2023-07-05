@@ -1,0 +1,32 @@
+<h1 class="text-center">Donation details </h1>
+
+
+<div class="progress">
+  <div class="progress-bar" role="progressbar" aria-label="Basic example" style="width: 33%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<div class="mb-3 text-end"> Step 
+  <span class="fw-bold"> 2 </span>
+  out of 
+  <span class="fw-bold"> 3 </span>
+ 
+</div>
+
+<div class="card-with-effect" >
+<p>
+
+
+   <div class="fw-bold"> ventilation price: </div> <hr>
+
+     <%#= number_to_currency(@netAthlete) %> 
+     <%#= number_to_currency(@platformFees.to_f) %> 
+ <%#= number_to_currency(@paymentFees) %>
+
+
+<%= render "subscriptions/form_main_subscription", subscription: @subscription %>
+
+</div>
+
+<%#= link_to "Go to step3", steps_subscribe_step3_path, class: "w-100 btn btn-primary" %>
+
+</div>
+

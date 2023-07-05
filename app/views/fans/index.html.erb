@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Fans</h1>
+
+<div id="fans">
+  <% @fans.each do |fan| %>
+    <%= render fan %>
+    <p>
+      <%= link_to "Show this fan", fan %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New fan", new_fan_path %>

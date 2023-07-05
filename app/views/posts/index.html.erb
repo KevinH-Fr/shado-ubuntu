@@ -1,0 +1,20 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Posts abonnements</h1>
+
+<div id="posts">
+  <% @posts_suivis.each do |post| %>
+    <%= render post %>
+  <% end %>
+</div>
+
+
+
+<h1 class="mt-4">Tous les posts</h1>
+
+<div id="posts">
+  <% @posts.each do |post| %>
+    <%= render post %>
+    
+  <% end %>
+</div>

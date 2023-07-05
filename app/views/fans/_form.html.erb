@@ -1,0 +1,49 @@
+
+  <div class="image_wrapper">
+    <div class="sized-fan-panorama rounded-top bg-secondary"> </div>
+  </div>
+  <div class="profile-pic-fan-overlay">
+    <%= image_tag(fan.profile_pic, class: "profile-pic") if fan.profile_pic.present? %> 
+  </div>
+  <div class="card-body pt-5 profile-card-text profile-pic-gap">
+
+    <%= form_with(model: fan) do |form| %>
+      <% if fan.errors.any? %>
+        <div style="color: red">
+          <h2><%= pluralize(fan.errors.count, "error") %> prohibited this fan from being saved:</h2>
+
+          <ul>
+            <% fan.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="input-group my-2">
+        <%= form.label :pseudo, class: "input-group-text label-with-format bg-secondary text-light" %>
+        <%= form.text_field :pseudo, class: "form-control field-with-format" %>
+      </div>
+
+      <div class="input-group my-2">
+        <%= form.label :bio, class: "input-group-text label-with-format bg-secondary text-light" %>
+        <%= form.text_area :bio, class: "form-control field-with-format" %>
+      </div>
+
+      <div>
+        <%= form.hidden_field :user_id, value: current_user.id %>
+      </div>
+
+      <div>
+        <%= form.label :profile_pic %>
+        <%= form.file_field :profile_pic %>
+      </div>
+
+     <div class="container-fluid text-end mt-2 p-2"> 
+        <button type="submit" class="btn btn-primary">
+          <span><i class="bi bi-check"></i> Update</span>
+        </button>
+      </div>
+    <% end %>
+
+  </div>

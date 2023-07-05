@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Admin parameters</h1>
+
+<div id="admin_parameters">
+  <% @admin_parameters.each do |admin_parameter| %>
+    <%= render admin_parameter %>
+    <p>
+      <%= link_to "Show this admin parameter", admin_parameter %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New admin parameter", new_admin_parameter_path %>

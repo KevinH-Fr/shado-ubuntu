@@ -1,0 +1,9 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @post %>
+
+
+<div class="card card-main">
+    <%= render template: 'comments/new' %>
+    <%= render @comments %>
+</div>

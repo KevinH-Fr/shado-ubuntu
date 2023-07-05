@@ -1,0 +1,30 @@
+<div class="card-main" id="<%= dom_id post %>">
+
+  <div class="ms-2">
+    <%= link_to image_tag(post.athlete.default_profile_pic, class:"profile-pic-mini"), athlete_path(post.athlete)  %>
+    <span class="fw-bold"> <%= link_to athlete_full_name(post.athlete_id), athlete_path(post.athlete), class:"no-underline" %></span> 
+    <small> <%= time_ago_in_words(post.created_at) %> ago </small> <br> 
+  </div>
+
+  <div>
+      <%= render 'posts/attachment', post: post %>
+
+
+  </div>
+
+  <div class="flex-element-text-start ms-4 mt-1">
+
+      <%= button_to vote_post_path(post, type: :upvote), method: :patch, class: "btn-like" do %>
+        <i class="fa fa-xs fa-solid fa-heart"></i>
+        <span><%= upvote_label(post, current_user) %></span>
+      <% end %>
+
+      <%= link_to post_path(post), class: "btn-main" do %>
+        <i class= "fa fa-xs fa-solid fa-comment"></i>  
+        <span>  <%= post.comments.count %> </span>       
+      <% end %>
+  </div>
+
+  <div class="my-1 ms-3"> <%= post.content %> </div>
+
+</div>

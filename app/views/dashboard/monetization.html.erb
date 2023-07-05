@@ -1,0 +1,40 @@
+<%= render "navbar" %>
+
+<h2 class="my-4">Monetization</h2>
+
+
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card card-with-effect">
+      <div class="card-body">
+        <h5 class="card-title"> My subscription</h5>
+        <p class="card-text">
+
+          <% if @main_campaign %>
+           subscription: <%=  @main_campaign.subscription  %> <br>
+           <%= link_to "edit", campaign_path(@main_campaign.id), class: "btn btn-secondary" %>
+          <% else %>
+            <%= link_to "Create", new_campaign_path(periodicity: true), class: "btn btn-success my-2" %>
+          <% end %>
+        </p>
+      </div>
+    </div>
+  </div>
+ 
+   <div class="col-sm-6">
+    <div class="card card-with-effect">
+      <div class="card-body">
+        <h5 class="card-title"> My campaigns <%= @popup_campaigns.count %>  </h5>
+        <p class="card-text">
+      
+          <% @popup_campaigns.each do |campaign| %>
+            <%= link_to campaign.title, campaign_path(campaign) %>
+          <% end %>
+          <br>
+        
+          <%= link_to "New campaign", new_campaign_path, class: "btn btn-success my-2" %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

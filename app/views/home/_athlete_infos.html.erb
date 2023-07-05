@@ -1,0 +1,31 @@
+<h2> 
+
+  <% nbCampaigns = @athlete.campaigns.count %>
+
+  <% if nbCampaigns == 0 %>
+    <div class="btn btn-warning fa fa-fade">  
+      <%= link_to new_campaign_path do %>
+        <i class="fa fa-warning"></i>
+        <span class="no-underline"> You need to set up your subscription ! </span>
+      <% end %>
+
+    </div>
+  <% end %>
+
+</h2>
+
+
+<h2>Mes campagnes
+    (nb: <%= @campaigns.count  %>)
+</h2>
+<%= render @campaigns %>
+
+<%= link_to "New campaign", new_campaign_path, class: "btn btn-success my-4" %>
+
+<hr>
+
+<h2>Mes followers
+  (nb: <%= @followers.count %>) 
+</h2>
+
+<%= render partial: 'fans/fan', collection: @followers, as: :fan %>

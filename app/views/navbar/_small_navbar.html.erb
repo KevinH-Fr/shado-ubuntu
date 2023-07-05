@@ -1,0 +1,25 @@
+<nav class="navbar navbar-light bg-light fixed-top">
+  <div class="container-fluid">
+    <button class="navbar-toggler " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <%= link_to image_tag("shado-logo.png", width: 100), root_path, class: "" %>
+
+    <div class="offcanvas offcanvas-start text-bg-light" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Menu</h5>
+        <button type="button" class="btn-close btn-close-dark" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+
+            <%= render "navbar/commun_navbar" %>
+
+
+          </li>
+
+    </div>
+  </div>
+</nav>

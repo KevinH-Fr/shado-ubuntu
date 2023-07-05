@@ -1,0 +1,60 @@
+<div class="card card-main" id="<%= dom_id campaign %>">
+  <p>
+    <strong>Title:</strong>
+    <%= campaign.title %>
+  </p>
+
+  <p>
+    <strong>Description:</strong>
+    <%= campaign.description %>
+  </p>
+
+  <p>
+    <strong>Periodicity:</strong>
+    <%= campaign.periodicity %>
+  </p>
+
+  <p>
+    <strong>Subscription:</strong>
+    <%= campaign.subscription %>
+  </p>
+
+  <p>
+    <strong>Target:</strong>
+    <%= campaign.target %>
+  </p>
+
+  <p>
+    <strong>Periode:</strong>
+    <%= campaign.start %> | <%= campaign.end %>
+  </p>
+
+    <%#= campaign.athlete_id %>
+
+
+  <p>
+    <strong>thanks you note:</strong>
+    <%= campaign.thankyounote %>
+  </p>
+
+</div>
+
+
+<div> 
+
+  <% if current_user == User.find(Athlete.find(campaign.athlete_id).user_id) %>
+    <%= link_to "Edit campaign", campaign_path(campaign), class: "btn btn-sm btn-secondary" %>
+  <% end %>
+
+  <div class="badge bg-primary">
+    nb sub:<%= sub_count(campaign) %> 
+  </div> 
+
+  <div class="badge bg-warning">
+    my subs : 
+  </div> 
+
+   <% sub_current_fan(campaign, user_fan).each do |sub| %>
+    <%= link_to "Edit sub #{sub.id}" , subscription_path(sub), class: "btn btn-success m-2" %>
+  <% end %> 
+</div>

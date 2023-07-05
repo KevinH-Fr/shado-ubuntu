@@ -1,0 +1,65 @@
+
+  <div class="chartBox mx-auto">
+    <canvas id="myChartBar"></canvas>
+  </div>
+
+  <% @data = @nbSubByDate %>
+
+<script>
+   
+  var couleur1 = 'rgb(174, 189, 202)';
+  var couleur2 = 'rgb(120, 149, 178)';
+
+// CHART BAR
+    var dataBarResa = {
+      datasets: [{
+      
+        data: <%= @data.to_json.html_safe %>,
+        fill: true,
+        backgroundColor: [ couleur1, couleur2 ],
+        borderWidth: 1
+      }]
+    };
+
+    var delayedBarResa;
+
+    var configBarResa = {
+      type: 'bar',
+      data: dataBarResa,
+      options: {
+
+        plugins: {
+            legend: {
+                display: false
+            },
+        },
+        aspectRatio: 1,
+
+         animation: {
+                onComplete: () => {
+                    delayed = true;
+                },
+                delay: (context) => {
+                    let delay = 0;
+                    if (context.type === 'data' && context.mode === 'default' && !delayedBarResa) {
+                    delay = context.dataIndex * 2000  + context.datasetIndex * 10;
+                    }
+                    return delay;
+                },
+            },
+
+            borderColor:'rgb(0, 0, 0)',
+            pointBorderWidth: 1,
+            pointHoverBorderWidth: 20,
+            lineTension: 0.4,
+
+          }
+      };
+
+    // render init block
+    var myChartBarResa = new Chart(
+      document.getElementById('myChartBar'),
+      configBarResa
+    );
+    
+</script>

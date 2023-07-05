@@ -1,0 +1,15 @@
+
+
+
+<% if user_signed_in? %>
+  
+  <% if @fan.present? %>
+    <%= render partial: 'fans/fan', locals: { fan: @fan } %>
+  <% end %>
+
+  <% if @athlete.present? %>
+    <%= render partial: 'athletes/athlete', locals: { athlete: @athlete } %>
+  <% end %>
+  <%#= render @user %>
+
+<% end %>

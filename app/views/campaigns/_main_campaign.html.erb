@@ -1,0 +1,42 @@
+<div class="card-with-effect" id="<%= dom_id campaign %>">
+
+  
+<%= render 'athletes/athlete', athlete: @campaign.athlete %>
+
+<hr>
+
+<%#= render @athlete %>
+
+  <div class="card border-white p-3"> 
+    <p>
+      <strong>Description:</strong>
+      <%= campaign.description %>
+    </p>
+
+    <p>
+      <strong>Subscription:</strong>
+      <%= number_to_currency(campaign.subscription) %> / month
+    </p>
+
+
+    <div class="card border-white text-center p-2"> 
+      <p>
+        Hey, 
+        <span class="fw-bold"><%= fan_full_name(user_fan.id) %> </span>
+
+        you are about to subscribe to 
+        <span class="fw-bold"><%= athlete_full_name(campaign.athlete_id) %></span>. <br>
+        
+        Keep in mind that this subscription is a donation that will help
+        <span class="fw-bold"><%= athlete_full_name(campaign.athlete_id) %> </span>
+        fullfill his dream bla bla. 
+      </p>
+    </div>
+
+    <%= link_to "Go to payment", steps_subscribe_step2_path(athlete: @campaign.athlete), class: "w-100 btn btn-primary my-4" %>
+    
+
+  </div>
+
+</div>
+

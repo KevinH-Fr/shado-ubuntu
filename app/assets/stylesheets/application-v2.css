@@ -1,0 +1,278 @@
+/*  DIMENSIONS */
+
+.full-height{
+    height: 100vh;
+}
+
+
+
+/* POSITIONS */
+
+.middled{
+    vertical-align: middle;
+    align-items: center;
+}
+
+.flex-element{
+    display: flex;
+    align-items: center; 
+    justify-content:space-between;
+}
+
+.flex-element-text-start{
+  display: flex;
+  align-items: start; 
+}
+
+/* NAVBAR */ 
+
+.navlink{
+    margin: .3em;
+    padding: .4em;
+    font-size: x-large;
+    border-radius: 20px;
+    display: block;
+    text-decoration: none;
+    color: grey;
+    min-width: 200px;
+}
+ 
+.navlink:hover{ 
+    background-color: #E5F7FD;
+    color: #00AFF0;
+}
+
+.nav-newpost{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: x-large;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #00AFF0;
+    margin: .5em;
+    margin-top: .5em;
+    padding: .5em;
+    border-radius: 30px;
+    min-width: 220px;
+}
+
+.icon-navbar{
+    font-size: 1.2em;
+}
+
+.text-navbar{
+    margin: .2em;
+}
+
+
+/*  CARDS */
+
+.card-main{
+   /* margin: .5em; */
+    margin-bottom: 1em;
+   /* padding: .5em; */
+    
+}
+
+.card-profile{
+   /* margin: .5em;
+    margin-bottom: 1em;
+    padding: .5em;*/
+   /* height: 100px;*/
+    border-radius: 50px;
+
+}
+
+.card-with-effect{
+  border-radius: 50px;
+  background: #fffcfc;
+  box-shadow:  10px 10px 20px #bebebe,
+              -10px -20px 20px #ffffff;
+
+  padding: 20px;
+}
+
+.little-card-with-effects{
+  border-radius: 22px;
+  background: #ffffff;
+  box-shadow:  6px 6px 27px #fffcfc,
+               -6px -6px 27px #ffffff;
+}
+
+.custom-rounded {
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+}
+
+.search-card{
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 40px;
+}
+
+.custom-style{
+
+}
+
+@media (max-width: 767.98px) {
+  .custom-border-radius {
+    border-radius: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .custom-border-radius {
+    border-radius: 50px;
+  }
+}
+
+
+/* CARD PROFILE  */
+
+  .profile-card-text {
+  /*  padding-left: 50px;*/
+  }
+
+  .sized {
+    height: 250px;
+    width: 100%;
+  }
+
+  .sized-fan-panorama {
+    height: 150px;
+    width: 100%;
+  }
+
+  .panorama-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: center center;
+    max-height: 250px;
+  }
+
+  .image_wrapper {
+    position: relative;
+  }
+
+  .profile-pic-overlay {
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+
+  .profile-pic-fan-overlay {
+    position: absolute;
+    top: 150px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+
+  .profile-pic {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    object-position: center center;
+    border-radius: 100px;
+    border: 5px solid white;
+    cursor: pointer;
+  }
+
+  .profile-pic-mini {
+    width: 65px;
+    height: 65px;
+    object-position: center center;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid white;
+  }
+  
+  .profile-pic-gap{
+    margin-top: 100px;
+  }
+
+
+  .input-group {
+    align-items: center;
+    vertical-align: middle;
+  }
+
+  /* BUOTONS */
+  
+  .btn-main, .btn-like{
+  /*  margin: .3em; */
+    padding: .4em;
+    margin-right: 20px;
+    font-size: x-large;
+    border-radius: 20px;
+    display: block;
+    text-decoration: none;
+    background-color: white;
+    color: grey;
+    border: none;
+}
+ 
+.btn-main:hover{ 
+    background-color: #E5F7FD;
+    color: #00AFF0;
+}
+
+.btn-like:hover{ 
+  background-color: #fde5f6;
+  color: #d82938;
+}
+
+.btn-no-style{
+  background-color: white;
+  border-style: none;
+}
+
+
+/* TEXTS */
+
+.no-underline{
+ text-decoration: none;
+ color: black;
+}
+
+.signup-form{
+  background-image: url("athlete_form_opacity.jpg");
+  width: 90vw;
+  max-width: 600px;
+
+}
+
+.btn-form{
+  width: 150px;
+  margin: 20px;
+  padding: 20px;
+
+}
+
+div.input-group label.label-colored {
+  background-color: #d7b053; /* Replace with your desired background color */
+  color: #fff; /* Set text color to ensure readability */
+  /* Add any other styles as needed */
+}
+
+.sm-max-widthed{
+  width: 90vw;
+  max-width: 400px;
+}
+
+
+#flash {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.max-widthed{
+  max-width: 800px;
+}
+

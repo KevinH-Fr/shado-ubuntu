@@ -1,0 +1,15 @@
+
+<nav class="">
+ 
+  <div class="my-4 text-center" >  
+    <% if current_user && user_athlete %>
+
+      <%= link_to image_tag("shado-logo.png", width: 100), dashboard_activities_path, class: "" %> 
+    <% else %>
+      <%= link_to image_tag("shado-logo.png", width: 100), root_path, class: "" %> 
+    <% end %>
+    </div>
+
+  <%= render "navbar/commun_navbar" %>
+
+</nav>

@@ -1,0 +1,18 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Friends</h1>
+
+<div id="new_friend">
+  <%= render partial: "friends/form", locals: { friend: Friend.new } %>
+</div>
+
+<div id="friends">
+  <% @friends.each do |friend| %>
+    <%= render friend %>
+    <p>
+      <%= link_to "Show this friend", friend %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New friend", new_friend_path %>

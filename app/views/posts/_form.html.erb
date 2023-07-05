@@ -1,0 +1,93 @@
+<%= form_with(model: post) do |form| %>
+  <% if post.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+        <% post.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+    <%#= form.label :title, style: "display: block" %>
+    <%#= form.text_field :title %>
+  
+
+  
+    <%#= form.label :location, style: "display: block" %>
+    <%#= form.text_field :location %>
+  
+
+  <div class= "m-0 p-0">
+    <%#= form.label :content, style: "display: block" %>
+    <%= form.text_area :content, placeholder: "Compose new post... ", class: "form-control createpostdesign" %>
+  </div>
+
+  <% if post.persisted? %>
+    <%= form.hidden_field :athlete_id %>
+  <% else %>
+    <%= form.hidden_field :athlete_id, value: @athlete.id %>
+  <% end %>
+ 
+<%
+=begin%>
+   <span class="image-upload">
+    <label for="file-input">
+      <span class="fa fa-image btn-main"></span>
+    </label>
+    <%= form.file_field :image1, id:"file-input" %>
+  </span>
+
+  <span class="video-upload">
+    <label for="file-input">
+      <span class="fa fa-video btn-main"></span>
+    </label>
+    <%= form.file_field :file, id:"file-input" %>
+  </span>
+
+  <span class="video-upload">
+    <label for="file-input">
+      <span class="fa fa-photo-film btn-main"></span>
+    </label>
+    <%= form.file_field :media, id:"file-input" %>
+  </span> 
+<%
+=end%>
+
+  <div>
+    <span class="fa fa-photo-film btn-main"></span>
+    <%= form.file_field :media %>
+  </div>
+
+
+  <div>
+    <%= form.label :exclusif %>
+    <%= form.check_box :exclusif %>
+  </div>
+  
+<div class="container-fluid text-end m-2 p-2"> 
+  <button type="submit" class="btn btn-primary">
+    <span><i class="bi bi-check"></i> Create!</span>
+  </button>
+</div>
+
+<% end %>
+
+<style>
+  .image-upload > input {
+    display: none;
+  }
+  .image-upload > label {
+    cursor:pointer;
+  }
+
+  .video-upload > input {
+    display: none;
+  }
+  .video-upload > label {
+    cursor:pointer;
+  }
+</style>

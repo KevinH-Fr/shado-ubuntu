@@ -1,0 +1,61 @@
+
+
+<% if current_user && user_athlete %>
+  <%= link_to(dashboard_activities_path, class:"navlink") do %>
+    <i class="bi bi-house icon-navbar middled"></i>
+    <span class="text-navbar middled"> Home  </span>
+  <% end %> 
+<% else %>
+  <%= link_to(root_path, class:"navlink") do %>
+    <i class="bi bi-house icon-navbar middled"></i>
+    <span class="text-navbar middled"> Home  </span>
+  <% end %> 
+<% end %>
+
+<%
+=begin%>
+   <%= link_to(posts_path, class:"navlink") do %>
+    <i class="bi bi-people icon-navbar middled"></i>
+    <span class="text-navbar middled"> Fan Base  </span>
+  <% end %>   
+<%
+=end%>
+
+  <% if current_user %>
+    <%= link_to(notifications_index_path, class: "navlink position-relative") do %>
+      <i class="bi bi-bell icon-navbar middled"></i>
+      <span class="text-navbar middled">Notifications</span>
+      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+        <%= @unread.count >= 9 ? "9+" : @unread.count %>
+      </span>
+    <% end %>
+  <% end %>
+
+  <%= link_to(athletes_path, class:"navlink") do %>
+    <i class="bi bi-star icon-navbar middled"></i>
+    <span class="text-navbar middled"> Subs  </span>
+  <% end %>  
+
+  <%= link_to(search_index_path, class:"navlink") do %>
+    <i class="bi bi-search icon-navbar middled"></i>
+    <span class="text-navbar middled"> Search  </span>
+  <% end %>  
+
+  <% if current_user.present? %>
+    <%= link_to(user_path(current_user.id), class:"navlink") do %>
+      <i class="bi bi-person icon-navbar middled"></i>
+      <span class="text-navbar middled"> My Profile  </span>
+    <% end %>  
+  <% end%>
+
+  <% if user_athlete.present? %>
+      
+    <%= link_to(dashboard_activities_path, class:"navlink") do %>
+      <i class="bi bi-clipboard2-data icon-navbar middled"></i>
+      <span class="text-navbar middled"> Dashboard  </span>
+    <% end %>  
+
+    <%= link_to(new_post_path, class:"navlink nav-newpost") do %>
+      <span> New Post </span>
+    <% end %>  
+  <% end %>

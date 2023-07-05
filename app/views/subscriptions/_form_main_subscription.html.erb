@@ -1,0 +1,69 @@
+<%= form_with(model: subscription) do |form| %>
+  <% if subscription.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(subscription.errors.count, "error") %> prohibited this subscription from being saved:</h2>
+
+      <ul>
+        <% subscription.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div data-controller="subscription">
+
+    Net Athlete: <span data-subscription-target="spanNet"></span> <br>
+    Platform Fees:  <span id="span-platform-fees" data-subscription-target="spanPlatformFeesInitial"></span> <br>
+    Payment Fees:  <span id="span-payment-fees" data-subscription-target="spanPaymentFeesInitial"></span> <br>
+
+    <hr>
+    <strong> 
+      total: <span id="span-total" data-subscription-target="spanTotal"></span>
+    </strong>
+    <br>
+    <%= button_tag "Cover Fees", data: { action: "click->subscription#toggleFees" }, class: "btn btn-outline-secondary w-50" %>
+
+    <%= form.hidden_field :prixNetInitial, value:  @netAthlete, 
+            data: { subscription_target: "prixNetInitial" } %>
+
+    <%= form.hidden_field :prixBrutInitial, value: @totalPrice, 
+            data: { subscription_target: "prixBrutInitial" } %>
+
+    <%= form.hidden_field :brut, value: @totalPrice, 
+            data: { subscription_target: "prixInitial" } %>
+
+    <%= form.hidden_field :platformFeesInitial, value: @platformFees, 
+            data: { subscription_target: "platformFeesInitial" } %>
+
+    <%= form.hidden_field :paymentFeesInitial, value: @paymentFees, 
+            data: { subscription_target: "paymentFeesInitial" } %>
+
+
+
+<br>
+            
+    <%= form.hidden_field :paymentFeesForfaitInitial, value: @paymentFeesForfait, 
+            data: { subscription_target: "paymentFeesForfaitInitial" } %>
+
+
+    
+    <%= form.hidden_field :paymentFeesPourcentageInitial, value: @paymentFeesPourcentage, 
+            data: { subscription_target: "paymentFeesPourcentageInitial" } %>
+
+
+
+    <%= form.hidden_field :campaign_id, value: @campaign.id %>
+    <%= form.hidden_field :fan_id, value: @fan.id %>
+
+
+    <div class="container-fluid text-end mt-2 p-2"> 
+      <button type="submit" class="w-100 btn btn-primary">
+        <span><i class="bi bi-check"></i> Create</span>
+      </button>
+    </div>
+
+  
+  </div>
+
+<% end %>

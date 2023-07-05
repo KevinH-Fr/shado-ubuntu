@@ -1,0 +1,9 @@
+
+<%= render @campaign %>
+
+<div>
+  <%= link_to "Edit this campaign", edit_campaign_path(@campaign) %> |
+  <%= link_to "Back to campaigns", campaigns_path %>
+
+  <%= button_to "Destroy this campaign", @campaign, method: :delete %>
+</div>

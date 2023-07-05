@@ -1,0 +1,11 @@
+<div class="container-fluid">
+
+    <% if post.media.attached? %>
+        <% if post.media.image? %>
+            <%= link_to image_tag(post.media, class:"w-100 custom-border-radius"), post_path(post) %>
+        <% elsif post.media.video? %> 
+            <%= video_tag(url_for(post.media), class:"w-100", controls:"", autoplay: true, muted: true) %>
+        <% end %>
+    <% end %>
+
+</div>

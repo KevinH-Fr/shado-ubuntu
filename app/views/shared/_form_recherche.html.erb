@@ -1,0 +1,30 @@
+<div class="card search-card">  
+    <h2>
+        Chercher parmi les athlètes, les sports, les posts, les localisations, ...
+    </h2>
+
+    <%= search_form_for @q, url: athletes_path, method: :get do |f| %>
+
+        <div class="form-group my-4">
+            <%= f.label :name_cont, "Nom", class: "fw-bold" %>
+            <div class="input-group">
+                <span class="input-group-text">
+                <i class="fa fa-search"></i>
+                </span>
+                <%= f.text_field :name_cont, class: "form-control", placeholder: "Nom" %>
+            </div>
+        </div>
+
+        <div class="form-group my-4">
+            <%= f.label :sport_cont, "Sport", class: "fw-bold" %>            
+            <%= f.collection_select :sport_id_eq, Sport.all, :id, :name, { include_blank: true }, class: "form-select", placeholder: "Select a sport" %>
+        </div>
+
+        <div class="text-end">
+            <%= f.submit "Chercher", class: "btn btn-primary my-2" %>
+        </div>
+
+    <% end %>
+
+</div>
+

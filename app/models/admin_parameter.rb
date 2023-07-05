@@ -1,0 +1,2 @@
+class AdminParameter < ApplicationRecord
+end

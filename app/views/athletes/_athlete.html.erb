@@ -1,0 +1,42 @@
+
+<div class="card" style="border: none;"> 
+  <div class="card-profile card-with-effect m-0 p-0 mb-2 custom-rounded" id="<%= dom_id athlete %>">
+    <div class="image_wrapper">
+      <div class="sized">
+        <%=link_to image_tag(athlete.default_panorama_pic, class: "panorama-img custom-rounded"), athlete_path(athlete)  %> 
+      </div>
+    </div>
+    <div class="profile-pic-overlay">
+      <%=link_to image_tag(athlete.default_profile_pic, class: "profile-pic"), athlete_path(athlete) %> 
+    </div>
+    <div class="pt-5 profile-card-text px-4">
+      <h4 class=""><%= link_to athlete.name, athlete_path(athlete),class:"no-underline" %></h4>
+      <p class=""><strong>Sport:</strong> <%= Sport.find(athlete.sport_id).name if athlete.sport_id.present?  %></p>
+      <p class=""><strong>Bio:</strong> <%= athlete.bio %></p>
+
+      <% unless current_page?(controller: 'users', action: 'show') %>
+
+        <% campaign_main = Campaign.where(athlete_id: athlete, periodicity: true) %>
+        <% fan = Fan.where(user_id: current_user.id) %>
+
+          <% if subscription_presence(campaign_main, fan) %>
+
+            <%= link_to "Unsubscribe",  subscriptions_path(), class: "w-100 btn btn-sm btn-outline-secondary fa-solid m-1 mb-4" %>
+          <% else %>    
+            <%= link_to "Subscribe", steps_subscribe_step1_path(athlete: athlete), class: "w-100 btn btn-sm btn-outline-primary  fa-solid m-1 mb-4" %>
+
+          <% end %>
+
+      <% end %> 
+
+
+      <%# bouton edit athlete si current user est athelete en question %>
+
+      <% if current_user.present? && user_athlete == athlete.id %>
+        <%= button_to "", edit_athlete_path(athlete), method: :post, class: "btn btn-sm btn-secondary fa-solid fa-pen-to-square m-1" %>
+      <% end %>
+      <br>
+    </div>
+  </div>
+
+</div>
