@@ -20,13 +20,18 @@
 
 <%= render "subscriptions/form_main_subscription", subscription: @subscription %>
 
+  <%# bouton stripe yaro %>
+
+<div data-turbo='false'>
+  <%= button_to  "buy yaro", checkout_create_path, params: {id: @subscription.id}, remote: true %>
+</div>
 
   <%# bouton stripe %>
     <div data-turbo='false'>
-      <%= form_with url: :create_checkout_session do |f| %>
-        <%= f.hidden_field :id, value: @subscription.id %>
-        <%= f.submit 'buy me - stripe', class: "btn btn-success" %>
-      <% end %>    
+      <%#= form_with url: :create_checkout_session do |f| %>
+        <%#= f.hidden_field :id, value: @subscription.id %>
+        <%#= f.submit 'buy me - stripe', class: "btn btn-success" %>
+      <%# end %>    
     </div>
 
 </div>
