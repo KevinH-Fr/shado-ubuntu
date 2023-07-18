@@ -6,10 +6,11 @@ Rails.application.routes.draw do
 
   #post "create-checkout-session", to: "steps_subscribe#create_checkout_session"
 
-  # yaro
   resources :checkout, only:[:create]
   post "checkout/create", to: "checkout#create"
 
+  get "success", to: "checkout#success"
+  get "cancel", to: "checkout#cancel"
 
   get 'steps_athlete/step1'
   get 'steps_athlete/step2'
@@ -17,11 +18,14 @@ Rails.application.routes.draw do
   resources :admin_parameters
   get 'search/index'
   resources :sports
+
   resources :subscriptions
 
 
   resources :campaigns do
     member do
+      post :edit
+
     #  get 'athletes/:id/campaigns', to: 'campaigns#index', as: 'campaigns'
       get 'subscribe', to: 'subscriptions#new', as: 'new_subscription'
     end

@@ -31,6 +31,7 @@ class CampaignsController < ApplicationController
 
     respond_to do |format|
       if @campaign.save
+
         format.html { redirect_to user_url(current_user), notice: "Campaign was successfully created." }
         format.json { render :show, status: :created, location: @campaign }
       else
@@ -67,6 +68,6 @@ class CampaignsController < ApplicationController
     end
 
     def campaign_params
-      params.require(:campaign).permit(:title, :description, :periodicity, :subscription, :target, :start, :end, :athlete_id, :thankyounote)
+      params.require(:campaign).permit(:title, :description, :periodicity, :subscription, :subscription_cent, :target, :start, :end, :athlete_id, :thankyounote)
     end
 end

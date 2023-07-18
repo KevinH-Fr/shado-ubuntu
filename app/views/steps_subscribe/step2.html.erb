@@ -26,6 +26,8 @@
   <%= button_to  "buy yaro", checkout_create_path, params: {id: @subscription.id}, remote: true %>
 </div>
 
+
+
   <%# bouton stripe %>
     <div data-turbo='false'>
       <%#= form_with url: :create_checkout_session do |f| %>
