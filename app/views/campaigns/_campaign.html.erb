@@ -22,7 +22,6 @@
 
 
   <% if campaign.periodicity == true %>
-
     <p>
       <div data-turbo='false'>
         <%= button_to "Subscribe", checkout_create_path, params: {
@@ -30,19 +29,14 @@
             payment_mode: 'subscription'}, remote: true %>
       </div>
     </p>
-
   <% else %>
-
     <p>
       <div data-turbo='false'>
         <%= button_to  "buy", checkout_create_path, params: {
           id: campaign.id,
           payment_mode: 'payment'}, remote: true %>
       </div>
-
     </p>
-
-
   <% end %>
 
 

@@ -33,9 +33,8 @@
       </p>
     </div>
 
-    <%= link_to "Go to payment", steps_subscribe_step2_path(athlete: @campaign.athlete), class: "w-100 btn btn-primary my-4" %>
+    <%= link_to "Go to payment", steps_subscribe_step2_path(athlete: @campaign.athlete, campaign: @campaign.id), class: "w-100 btn btn-primary my-4" %>
     
-
   </div>
 
 </div>

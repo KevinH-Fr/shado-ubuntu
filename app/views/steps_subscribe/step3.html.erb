@@ -25,6 +25,16 @@
   
   </p>
 
+  Checkout status: <%= @session_with_expand.payment_status %> <br>
+
+  Product bought: <%= @product_id.title  %> <br>
+
+  Price paid: <%= @session_with_expand.amount_total/100.to_f %>
+  <%= @session_with_expand.currency %>
+
+
+
+
   <%= link_to "Home", root_path, class: "w-100 btn btn-secondary" %>
 
 </div>

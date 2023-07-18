@@ -6,6 +6,7 @@ class Subscription < ApplicationRecord
   before_destroy :cleanup_notifications
   has_noticed_notifications model_name: 'Notification'
 
+
   private 
   
   def notify_recipient

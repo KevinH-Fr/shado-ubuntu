@@ -30,6 +30,14 @@ class StepsSubscribeController < ApplicationController
 
   def step3
 
+
+    @session_with_expand = Stripe::Checkout::Session
+    .retrieve({ id: params[:session_id], expand: ["line_items"] }) 
+
+  @session_with_expand.line_items.data.each do |line_item|
+    @product_id = Campaign.find_by(stripe_product_id: line_item.price.product)
+  end
+  
  #   @campaignThankNote = @campaign.thankyounote
     @fan =  Fan.find(user_role_id(current_user))
 

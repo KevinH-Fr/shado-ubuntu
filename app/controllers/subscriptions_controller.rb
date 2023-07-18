@@ -11,7 +11,11 @@ class SubscriptionsController < ApplicationController
 
   def new
     @subscription = Subscription.new
-    @campaign = Campaign.find(params[:id])
+    if params[:subscription_type] = "main"
+      @athlete = Athlete.find(params[:athlete])
+      @campaign = Campaign.where(athlete_id: @athlete.id, periodicity: true).first
+    end 
+
     @fan = Fan.where(user_id: current_user.id).first
 
 
@@ -21,18 +25,48 @@ class SubscriptionsController < ApplicationController
   end
 
   def create
-    @subscription = Subscription.new(subscription_params)
+
+    campaign_id = params[:subscription][:campaign_id]
+    puts "___________________ #{campaign_id}"
 
 
-    respond_to do |format|
-      if @subscription.save
-        format.html { redirect_to steps_subscribe_step3_path, notice: "Subscription was successfully created." }
-        format.json { render :show, status: :created, location: @subscription }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @subscription.errors, status: :unprocessable_entity }
-      end
-    end
+    # Handle the Stripe payment flow here
+    product = Campaign.find(campaign_id)
+
+
+    puts "___________________ #{product.subscription}"
+
+    # code dessous fonctionne mais erreur qaund product dynamique sur param
+  
+      session = Stripe::Checkout::Session.create({
+        mode: 'subscription',
+        payment_method_types: ['card'],
+        line_items: [
+          {
+            price: product.stripe_price_id,
+            quantity: 1,
+          }
+        ],
+        success_url: success_url + "?session_id={CHECKOUT_SESSION_ID}",
+        cancel_url: cancel_url,
+      })
+  
+    redirect_to session.url, allow_other_host: true, status: 303
+  
+
+    # Create the sale record in your database 
+    # then the webhook update the status?
+    @subscription = Subscription.create(
+      campaign_id: product.id,
+      fan_id: 1, # a remplacer par element dynamique
+      brut: product.subscription)
+
+  end
+
+  def success
+  end
+
+  def cancel
   end
 
   def update
@@ -55,8 +89,6 @@ class SubscriptionsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
-
 
   private
     def set_subscription

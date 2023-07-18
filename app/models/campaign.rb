@@ -15,7 +15,6 @@ class Campaign < ApplicationRecord
   end
 
 
-  
   after_create do
     product = Stripe::Product.create(name: title)
   
@@ -68,11 +67,5 @@ class Campaign < ApplicationRecord
 
       update(stripe_price_id: price.id )
   end
-
-  
-
-  # ajouter le update after update 
-
-
 
 end

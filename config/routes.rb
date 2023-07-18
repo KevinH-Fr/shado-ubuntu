@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   resources :checkout, only:[:create]
   post "checkout/create", to: "checkout#create"
 
-  get "success", to: "checkout#success"
+
+  get "success", to: "steps_subscribe#step3"
   get "cancel", to: "checkout#cancel"
 
   get 'steps_athlete/step1'
