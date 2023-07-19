@@ -17,6 +17,13 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :fan, :athlete 
  # after_initialize :build_athlete  # Add this callback to initialize the athlete object
 
+       
+       after_create do
+
+              customer = Stripe::Customer.create(email: email)
+              update(stripe_customer_id: customer.id)
+
+       end
 
 
 end
