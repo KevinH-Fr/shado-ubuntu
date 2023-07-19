@@ -1,0 +1,11 @@
+liste des popup campaigns: <br>
+
+
+<% @athlete.campaigns.each do |campaign| %>
+    <%#= link_to campaign.title, campaign_path(campaign) %>
+
+    <%= link_to campaign.title, steps_subscribe_step1_path(athlete: @athlete.id, campaign: campaign), 
+            class: "w-100 btn btn-sm btn-outline-primary fa-solid m-1 mb-4" %>
+
+    <br>
+<% end %>

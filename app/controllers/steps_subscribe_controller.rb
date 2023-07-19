@@ -4,13 +4,17 @@ class StepsSubscribeController < ApplicationController
 
   def step1
     @athlete = Athlete.find(params[:athlete])
-    @campaign = Campaign.where(athlete_id:  @athlete, periodicity: true).first
-
+   # @campaign = Campaign.where(athlete_id:  @athlete, periodicity: true).first
+    @campaign = Campaign.find(params[:campaign])
   end
 
   def step2
     @athlete = Athlete.find(params[:athlete])
-    @campaign = Campaign.where(athlete_id:  @athlete, periodicity: true).first
+ #   @campaign = Campaign.where(athlete_id:  @athlete, periodicity: true).first
+    
+ 
+    @campaign = Campaign.find(params[:campaign])
+
     @subscription = Subscription.new
     @fan =  Fan.find(user_role_id(current_user))
 

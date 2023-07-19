@@ -34,25 +34,41 @@ class SubscriptionsController < ApplicationController
     product = Campaign.find(campaign_id)
 
 
+    puts "_________________ periodicity: #{product.periodicity}"
+
     puts "___________________ #{product.subscription}"
 
-    # code dessous fonctionne mais erreur qaund product dynamique sur param
+
+      if product.periodicity == true 
+        session = Stripe::Checkout::Session.create({
+          mode: 'subscription',
+          payment_method_types: ['card'],
+          line_items: [
+            {
+              price: product.stripe_price_id,
+              quantity: 1,
+            }
+          ],
+          success_url: success_url + "?session_id={CHECKOUT_SESSION_ID}",
+          cancel_url: cancel_url,
+        })
+      else 
+        session = Stripe::Checkout::Session.create({
+          mode: 'payment',
+          payment_method_types: ['card'],
+          line_items: [
+            {
+              price: product.stripe_price_id,
+              quantity: 1,
+            }
+          ],
+          success_url: success_url + "?session_id={CHECKOUT_SESSION_ID}",
+          cancel_url: cancel_url,
+        })
+
+      end 
   
-      session = Stripe::Checkout::Session.create({
-        mode: 'subscription',
-        payment_method_types: ['card'],
-        line_items: [
-          {
-            price: product.stripe_price_id,
-            quantity: 1,
-          }
-        ],
-        success_url: success_url + "?session_id={CHECKOUT_SESSION_ID}",
-        cancel_url: cancel_url,
-      })
-  
-    redirect_to session.url, allow_other_host: true, status: 303
-  
+      redirect_to session.url, allow_other_host: true, status: 303
 
     # Create the sale record in your database 
     # then the webhook update the status?
