@@ -34,6 +34,7 @@ class WebhooksController < ApplicationController
         # passer status a true plutot que incrementation
         
           product = Subscription.find_by(stripe_product_id: line_item.price.product)
+          puts "____________ subscription for webhook: #{product}"
           product.update(status: true)
         
         end
