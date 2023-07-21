@@ -19,14 +19,14 @@
         <% campaign_main = Campaign.where(athlete_id: athlete, periodicity: true) %>
         <% fan = Fan.where(user_id: current_user.id) %>
 
-          <% if subscription_presence(campaign_main, fan) %>
 
+          <% if subscription_presence(campaign_main, fan) %>
             <%= link_to "Unsubscribe",  subscriptions_path(), class: "w-100 btn btn-sm btn-outline-secondary fa-solid m-1 mb-4" %>
-          <% else %>    
-            <% if campaign_main %>
+          <% else %>   
+            <% if campaign_main.present? %>
                 <%= link_to "Subscribe", steps_subscribe_step1_path(athlete: athlete, campaign: campaign_main.first.id), 
                   class: "w-100 btn btn-sm btn-outline-primary  fa-solid m-1 mb-4" %>
-             <% end %>
+               <% end %> 
           <% end %>
 
       <% end %> 
