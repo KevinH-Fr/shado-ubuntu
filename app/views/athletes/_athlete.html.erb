@@ -23,7 +23,7 @@
 
             <%= link_to "Unsubscribe",  subscriptions_path(), class: "w-100 btn btn-sm btn-outline-secondary fa-solid m-1 mb-4" %>
           <% else %>    
-            <%= link_to "Subscribe", steps_subscribe_step1_path(athlete: athlete), class: "w-100 btn btn-sm btn-outline-primary  fa-solid m-1 mb-4" %>
+            <%= link_to "Subscribe", steps_subscribe_step1_path(athlete: athlete, campaign: campaign_main.first.id), class: "w-100 btn btn-sm btn-outline-primary  fa-solid m-1 mb-4" %>
 
           <% end %>
 

@@ -1,4 +1,7 @@
 class SubscriptionsController < ApplicationController
+
+  include UsersHelper 
+
   before_action :set_subscription, only: %i[ show edit update destroy ]
 
   def index
@@ -70,12 +73,20 @@ class SubscriptionsController < ApplicationController
   
       redirect_to session.url, allow_other_host: true, status: 303
 
-    # Create the sale record in your database 
-    # then the webhook update the status?
-    @subscription = Subscription.create(
-      campaign_id: product.id,
-      fan_id: 1, # a remplacer par element dynamique
-      brut: product.subscription)
+      puts "___________________ #{Fan.find(user_role_id(current_user.id)).id}"
+
+      fan_id = Fan.find(user_role_id(current_user.id)).id
+      customer_stripe = current_user.stripe_customer_id
+
+      # Create the sale record in your database 
+      # then the webhook update the status?
+      @subscription = Subscription.create(
+        campaign_id: product.id,
+        fan_id: fan_id,
+        brut: product.subscription,
+        stripe_product_id: product.stripe_product_id,
+        stripe_customer_id: customer_stripe
+      )
 
   end
 
@@ -112,7 +123,8 @@ class SubscriptionsController < ApplicationController
     end
 
     def subscription_params
-      params.require(:subscription).permit(:campaign_id, :fan_id, :brut, :net)
+      params.require(:subscription).permit(:campaign_id, :fan_id, :brut, :net, :stripe_product_id,
+        :stripe_customer_id, :status )
     end
 
     def mark_notifications_as_read
