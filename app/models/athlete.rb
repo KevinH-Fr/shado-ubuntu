@@ -36,7 +36,7 @@ class Athlete < ApplicationRecord
     if panorama_pic.attached?
       panorama_pic
     else
-      'panorama_default'
+      'panorama_default.jpg'
     end
   end
 
