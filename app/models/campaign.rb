@@ -8,7 +8,13 @@ class Campaign < ApplicationRecord
   has_many :subscriptions
   has_many :fans, through: :subscriptions
 
+  before_save :set_default_title_main_campaign
+
   before_save :set_default_thank_you_note
+
+  def set_default_title_main_campaign
+    self.title = "My main campaign" if title.blank?
+  end
 
   def set_default_thank_you_note
     self.thankyounote = "Thanks a lot for donating!" if thankyounote.blank?
