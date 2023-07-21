@@ -1,7 +1,7 @@
 class Campaign < ApplicationRecord
   belongs_to :athlete
 
-  validates :title, :subscription, presence: true
+  validates :subscription, presence: true
 
   monetize :subscription, as: :subscription_cent
 
