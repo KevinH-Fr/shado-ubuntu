@@ -14,7 +14,7 @@ class Fan < ApplicationRecord
       if profile_pic.attached?
         profile_pic
       else
-        'profile_default'
+        'profile_default.png'
       end
     end
 
