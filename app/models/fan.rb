@@ -17,6 +17,5 @@ class Fan < ApplicationRecord
         'profile_default.png'
       end
     end
-
   
 end

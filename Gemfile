@@ -38,3 +38,4 @@ gem "noticed", "~> 1.6"
 gem "stripe"
 
 gem 'money-rails', '~> 1.12'
+

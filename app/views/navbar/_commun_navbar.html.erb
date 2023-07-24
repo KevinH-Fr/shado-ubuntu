@@ -1,15 +1,16 @@
 
 
 <% if current_user && user_athlete %>
-  <%= link_to(dashboard_activities_path, class:"navlink") do %>
+  <%= link_to(dashboard_activities_path(page: 'home'), class: "navlink #{'brand-colored' if params[:page] == "home"}" ) do %>
     <i class="bi bi-house icon-navbar middled"></i>
     <span class="text-navbar middled"> Home  </span>
   <% end %> 
 <% else %>
-  <%= link_to(root_path, class:"navlink") do %>
-    <i class="bi bi-house icon-navbar middled"></i>
-    <span class="text-navbar middled"> Home  </span>
-  <% end %> 
+<%= link_to(root_path(page: 'home'), class: "navlink #{'brand-colored' if params[:page] == 'home'}") do %>
+  <i class="bi bi-house icon-navbar middled"></i>
+  <span class="text-navbar middled"> Home </span>
+<% end %>
+
 <% end %>
 
 <%
@@ -22,27 +23,30 @@
 =end%>
 
   <% if current_user %>
-    <%= link_to(notifications_index_path, class: "navlink position-relative") do %>
+    <%= link_to(notifications_index_path(page: 'notifications'), class: "navlink position-relative #{'brand-colored' if params[:page] == "notifications"}" ) do %>
       <i class="bi bi-bell icon-navbar middled"></i>
       <span class="text-navbar middled">Notifications</span>
-      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+      <span class="position-absolute top-50 start-0 translate-middle badge rounded-pill bg-danger" style="font-size: 0.8rem;">
         <%= @unread.count >= 9 ? "9+" : @unread.count %>
       </span>
     <% end %>
   <% end %>
 
-  <%= link_to(athletes_path, class:"navlink") do %>
+  <%= link_to(athletes_path(page: 'subs'), class: "navlink position-relative #{'brand-colored' if params[:page] == "subs"}" ) do %>
+
     <i class="bi bi-star icon-navbar middled"></i>
     <span class="text-navbar middled"> Subs  </span>
   <% end %>  
 
-  <%= link_to(search_index_path, class:"navlink") do %>
+  <%= link_to(search_index_path(page: 'search'), class: "navlink position-relative #{'brand-colored' if params[:page] == "search"}" ) do %>
+
     <i class="bi bi-search icon-navbar middled"></i>
     <span class="text-navbar middled"> Search  </span>
   <% end %>  
 
   <% if current_user.present? %>
-    <%= link_to(user_path(current_user.id), class:"navlink") do %>
+    <%= link_to(user_path(current_user.id, page: 'profile'), class: "navlink position-relative #{'brand-colored' if params[:page] == "profile"}" ) do %>
+
       <i class="bi bi-person icon-navbar middled"></i>
       <span class="text-navbar middled"> My Profile  </span>
     <% end %>  
@@ -50,12 +54,13 @@
 
   <% if user_athlete.present? %>
       
-    <%= link_to(dashboard_activities_path, class:"navlink") do %>
+    <%= link_to(dashboard_activities_path(page: 'dashboard'), class: "navlink position-relative #{'brand-colored' if params[:page] == "dashboard"}" ) do %>
+
       <i class="bi bi-clipboard2-data icon-navbar middled"></i>
       <span class="text-navbar middled"> Dashboard  </span>
     <% end %>  
 
-    <%= link_to(new_post_path, class:"navlink nav-newpost") do %>
+    <%= link_to(new_post_path(page: 'new_post'), class: "navlink position-relative #{'brand-colored' if params[:page] == "new_post"}" ) do %>
       <span> New Post </span>
     <% end %>  
   <% end %>

@@ -1,22 +1,18 @@
 
-<%# if @partial_role %>
-    Bienvenue  <%#= user_name(current_user.id) %>
-    <hr>
+<% if @partial_role %>
 
+    <%= render partial: @partial_role  %>
 
-
-    <%#= render partial: @partial_role  %>
-
-<%# else %>
+<% else %>
 
     <h4 class="mt-4">Tous les posts</h4>
 
     <div id="posts">
-        <%# @posts.each do |post| %>
-            <%#= render post %>
-        <%# end %>
+        <% @posts.each do |post| %>
+            <%= render post %>
+        <% end %>
     </div>
 
 
-<%# end %>
+<% end %>
 

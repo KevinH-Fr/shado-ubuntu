@@ -6,7 +6,8 @@ class HomeController < ApplicationController
     @athlete = Athlete.where(user_id: current_user).first
 
     @q = Athlete.ransack(params[:q])
-   @posts = Post.non_exclusif
+    @posts = Post.non_exclusif
+
 
     if current_user && user_role(current_user.id) == "fan" 
       @partial_role = 'fan_infos'
@@ -14,7 +15,11 @@ class HomeController < ApplicationController
       @athletes = @fan.athletes.distinct
 
       @posts = Post.non_exclusif
+      
       @posts_suivis = Post.where(athlete_id: @athletes.pluck(:id))
+      # remplacer par un module qui fait le call a stripe pour verif si fan est abonné
+
+      
 
 
     elsif current_user && user_role(current_user) == "athlete" 

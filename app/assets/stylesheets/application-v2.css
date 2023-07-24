@@ -1,3 +1,5 @@
+
+
 /*  DIMENSIONS */
 
 .full-height{
@@ -40,6 +42,21 @@
 .navlink:hover{ 
     background-color: #E5F7FD;
     color: #00AFF0;
+}
+
+.brand-colored{
+  color: #00AFF0;
+}
+
+
+.brand-bg-colored{
+ background-color: #00AFF0;
+}
+
+
+.right-bordered{
+  border-right: 1px solid rgb(180, 180, 180);
+
 }
 
 .nav-newpost{
@@ -276,3 +293,23 @@ div.input-group label.label-colored {
   max-width: 800px;
 }
 
+/* Target the whole scrollbar */
+::-webkit-scrollbar {
+  width: 5px; /* width of the scrollbar */
+}
+
+/* Track (the area behind the thumb) */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* color of the track */
+}
+
+/* Thumb (the draggable scrolling element) */
+::-webkit-scrollbar-thumb {
+  background: #888; /* color of the thumb */
+  border-radius: 5px; /* roundness of the thumb */
+}
+
+/* On hover, add a different background color to the thumb */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
